@@ -1,0 +1,76 @@
+// TwisToz Premium Brand Palette
+$color-royal: #052b6b;
+$color-royal-dark: #041f4f;
+$color-royal-light: #0a3d8f;
+$color-orange: #ff7a00;
+$color-orange-hover: #e56e00;
+$color-orange-light: #fff3e6;
+$color-white: #ffffff;
+$color-cream: #faf7f2;
+$color-cream-dark: #f3efe8;
+$color-gray-100: #f4f4f6;
+$color-gray-200: #e8e8ed;
+$color-gray-300: #d1d1db;
+$color-gray-400: #9ca3af;
+$color-gray-600: #6b7280;
+$color-text: #1a2744;
+$color-text-light: #4b5563;
+$color-green: #22c55e;
+$color-blue: #3b82f6;
+
+// Typography
+$font-primary: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-display: 'Poppins', sans-serif;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+$spacing-4xl: 6rem;
+$spacing-5xl: 8rem;
+
+// Breakpoints
+$bp-xs: 480px;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-2xl: 1400px;
+
+// Layout
+$container-wide: 1240px;
+$header-height: 100px;
+$header-height-mobile: 76px;
+$topbar-height: 42px;
+
+// Border radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-xl: 28px;
+$radius-full: 9999px;
+
+// Shadows
+$shadow-xs: 0 1px 3px rgba(5, 43, 107, 0.04);
+$shadow-sm: 0 4px 16px rgba(5, 43, 107, 0.06);
+$shadow-md: 0 8px 32px rgba(5, 43, 107, 0.1);
+$shadow-lg: 0 16px 48px rgba(5, 43, 107, 0.12);
+$shadow-xl: 0 24px 64px rgba(5, 43, 107, 0.14);
+$shadow-card: 0 4px 24px rgba(5, 43, 107, 0.08);
+$shadow-card-hover: 0 12px 40px rgba(5, 43, 107, 0.14);
+$shadow-feature: 0 12px 48px rgba(5, 43, 107, 0.1);
+
+// Gradients
+$gradient-royal: linear-gradient(135deg, $color-royal 0%, $color-royal-light 100%);
+$gradient-orange: linear-gradient(135deg, $color-orange 0%, #ff9533 100%);
+$gradient-hero: linear-gradient(180deg, $color-white 0%, $color-cream 100%);
+$gradient-cream: linear-gradient(180deg, $color-cream 0%, $color-white 100%);
+
+// Transitions
+$transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);

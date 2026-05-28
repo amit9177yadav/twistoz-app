@@ -1,0 +1,290 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  background: $gradient-cream;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  align-items: center;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+    align-items: start;
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1.1fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+  }
+}
+
+.left {
+  order: 1;
+  text-align: center;
+
+  @include respond-to(md) {
+    text-align: left;
+  }
+
+  @include respond-to(lg) {
+    order: 1;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-orange;
+  margin-bottom: $spacing-sm;
+
+  @include respond-to(sm) {
+    font-size: 0.75rem;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(1.375rem, 4vw, 2.125rem);
+  font-weight: 700;
+  color: $color-royal;
+  margin-bottom: $spacing-lg;
+  line-height: 1.25;
+
+  @include respond-to(sm) {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.brand {
+  color: $color-orange;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  @include respond-to(sm) {
+    gap: $spacing-md;
+  }
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  font-size: clamp(0.8125rem, 2vw, 0.9375rem);
+  color: $color-text;
+  line-height: 1.5;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+  text-align: left;
+
+  &:hover {
+    background: rgba($color-white, 0.6);
+  }
+}
+
+.checkIcon {
+  display: flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: $color-white;
+  background: $gradient-orange;
+  border-radius: 50%;
+  padding: 3px;
+  margin-top: 1px;
+  box-shadow: 0 2px 8px rgba($color-orange, 0.3);
+
+  @include respond-to(sm) {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.center {
+  order: 2;
+  display: flex;
+  justify-content: center;
+
+  @include respond-to(lg) {
+    order: 2;
+  }
+}
+
+.imageWrap {
+  width: min(100%, 260px);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  border: 4px solid $color-white;
+  position: relative;
+  margin-inline: auto;
+
+  @include respond-to(xs) {
+    width: min(100%, 300px);
+  }
+
+  @include respond-to(sm) {
+    width: min(100%, 360px);
+    border-width: 5px;
+  }
+
+  @include respond-to(md) {
+    width: min(100%, 320px);
+  }
+
+  @include respond-to(lg) {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba($color-royal, 0.06);
+    pointer-events: none;
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.right {
+  order: 3;
+
+  @include respond-to(md) {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  @include respond-to(lg) {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+.advantageBox {
+  background: $gradient-royal;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  color: $color-white;
+  box-shadow: $shadow-lg;
+
+  @include respond-to(sm) {
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+  }
+}
+
+.advantageTitle {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: $spacing-md;
+  color: $color-white;
+
+  @include respond-to(sm) {
+    font-size: 1.1875rem;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @include respond-to(sm) {
+    gap: $spacing-lg;
+  }
+}
+
+.advantage {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+  padding: $spacing-xs;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  @include respond-to(sm) {
+    gap: $spacing-md;
+    padding: $spacing-sm;
+  }
+
+  &:hover {
+    background: rgba($color-white, 0.06);
+  }
+}
+
+.advantageIcon {
+  display: flex;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  color: $color-orange;
+  background: rgba($color-orange, 0.12);
+  border-radius: $radius-sm;
+  padding: 7px;
+
+  @include respond-to(sm) {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.advantageName {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: $color-white;
+
+  @include respond-to(sm) {
+    font-size: 0.9375rem;
+  }
+}
+
+.advantageDesc {
+  font-size: 0.75rem;
+  color: rgba($color-white, 0.72);
+  line-height: 1.55;
+
+  @include respond-to(sm) {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+}

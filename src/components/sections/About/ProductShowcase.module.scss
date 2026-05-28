@@ -1,0 +1,75 @@
+@use '../../../styles/variables' as *;
+
+.packageTop {
+  background: linear-gradient(135deg, $color-royal-light 0%, $color-royal 100%);
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.brand {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: $color-white;
+  letter-spacing: 0.02em;
+}
+
+.brandAccent {
+  color: $color-orange;
+}
+
+.packageBody {
+  background: linear-gradient(180deg, $color-royal 0%, $color-royal-dark 100%);
+  padding: 24px 16px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba($color-orange, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+}
+
+.productName {
+  display: block;
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: $color-white;
+  line-height: 1.1;
+}
+
+.productType {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $color-orange;
+  margin-bottom: 14px;
+}
+
+.pastaIllustration {
+  width: 64px;
+  height: 44px;
+  margin: 0 auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 44'%3E%3Crect x='6' y='8' width='8' height='28' rx='4' fill='%23f5d78e' transform='rotate(15 10 22)'/%3E%3Crect x='20' y='4' width='8' height='32' rx='4' fill='%23f0cc70' transform='rotate(-5 24 20)'/%3E%3Crect x='36' y='8' width='8' height='28' rx='4' fill='%23f5d78e' transform='rotate(10 40 22)'/%3E%3Crect x='50' y='6' width='8' height='30' rx='4' fill='%23f0cc70' transform='rotate(-12 54 21)'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: contain;
+}
+
+.packageBadge {
+  background: $gradient-orange;
+  color: $color-white;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0 0 10px 10px;
+}

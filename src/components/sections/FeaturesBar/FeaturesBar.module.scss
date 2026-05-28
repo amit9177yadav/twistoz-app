@@ -1,0 +1,158 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
+  z-index: 10;
+  padding-inline: $spacing-sm;
+  pointer-events: none;
+
+  @include respond-to(sm) {
+    padding-inline: $spacing-md;
+  }
+
+  @include respond-to(md) {
+    padding-inline: $spacing-lg;
+  }
+}
+
+.bar {
+  @include container;
+  display: flex;
+  gap: $spacing-xs;
+  background: $color-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-feature;
+  padding: $spacing-sm $spacing-xs;
+  border: 1px solid $color-gray-200;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  pointer-events: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include respond-to(xs) {
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-sm;
+  }
+
+  @include respond-to(sm) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: visible;
+    border-radius: $radius-lg;
+    padding: $spacing-lg $spacing-md;
+  }
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(5, 1fr);
+    padding: $spacing-xl $spacing-lg;
+    gap: $spacing-xs;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs;
+  flex: 0 0 108px;
+  scroll-snap-align: center;
+  transition: transform $transition-base;
+
+  @include respond-to(xs) {
+    flex: 0 0 116px;
+  }
+
+  @include respond-to(sm) {
+    flex: unset;
+    gap: $spacing-sm;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid;
+  transition: all $transition-base;
+  flex-shrink: 0;
+
+  @include respond-to(md) {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.orange {
+  border-color: rgba($color-orange, 0.25);
+  background: rgba($color-orange, 0.06);
+  color: $color-orange;
+}
+
+.royal {
+  border-color: rgba($color-royal, 0.15);
+  background: rgba($color-royal, 0.04);
+  color: $color-royal;
+}
+
+.item:hover .iconCircle {
+  border-color: currentColor;
+  box-shadow: $shadow-sm;
+}
+
+.icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+
+  @include respond-to(md) {
+    width: 22px;
+    height: 22px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.75;
+  }
+}
+
+.label {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  color: $color-royal;
+  line-height: 1.3;
+  max-width: 92px;
+
+  @include respond-to(xs) {
+    font-size: 0.625rem;
+    max-width: 100px;
+  }
+
+  @include respond-to(sm) {
+    font-size: 0.6875rem;
+  }
+
+  @include respond-to(md) {
+    font-size: 0.75rem;
+    max-width: 115px;
+  }
+}

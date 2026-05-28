@@ -1,0 +1,134 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-md $spacing-xs;
+  background: $color-white;
+  border-radius: $radius-md;
+  border: 1px solid $color-gray-200;
+  box-shadow: $shadow-card;
+  transition: box-shadow $transition-base, border-color $transition-base;
+  height: 100%;
+
+  @include respond-to(xs) {
+    padding: $spacing-lg $spacing-sm;
+  }
+
+  @include respond-to(sm) {
+    padding: $spacing-xl $spacing-md;
+    border-radius: $radius-lg;
+  }
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+    border-color: rgba($color-orange, 0.2);
+
+    .image {
+      transform: scale(1.08);
+    }
+
+    .imageOverlay {
+      opacity: 0.1;
+    }
+  }
+}
+
+.imageWrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: $spacing-sm;
+  border: 3px solid $color-gray-100;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: $shadow-sm;
+
+  @include respond-to(xs) {
+    width: 104px;
+    height: 104px;
+    margin-bottom: $spacing-md;
+  }
+
+  @include respond-to(sm) {
+    width: 130px;
+    height: 130px;
+    margin-bottom: $spacing-lg;
+  }
+
+  @include respond-to(md) {
+    width: 145px;
+    height: 145px;
+  }
+
+  @include respond-to(xl) {
+    width: 155px;
+    height: 155px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-slow;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: $color-orange;
+  opacity: 0;
+  transition: opacity $transition-base;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $color-royal;
+  margin-bottom: $spacing-xs;
+
+  @include respond-to(sm) {
+    font-size: 1.0625rem;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.description {
+  font-size: 0.6875rem;
+  color: $color-gray-600;
+  line-height: 1.55;
+  margin-bottom: $spacing-sm;
+  flex-grow: 1;
+  max-width: 210px;
+
+  @include respond-to(xs) {
+    font-size: 0.75rem;
+  }
+
+  @include respond-to(sm) {
+    font-size: 0.8125rem;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+}
+
+.button {
+  font-size: 0.6875rem;
+  padding: 0.375rem 0.875rem;
+
+  @include respond-to(xs) {
+    font-size: 0.75rem;
+    padding: 0.4375rem 1rem;
+  }
+
+  @include respond-to(sm) {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1.25rem;
+  }
+}

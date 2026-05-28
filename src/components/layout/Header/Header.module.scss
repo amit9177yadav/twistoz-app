@@ -1,0 +1,259 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $color-white;
+  padding-top: env(safe-area-inset-top);
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: rgba($color-white, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid $color-gray-200;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: $header-height-mobile;
+  height: $header-height-mobile;
+  gap: $spacing-sm;
+  position: relative;
+
+  @include respond-to(md) {
+    min-height: 84px;
+    height: 84px;
+  }
+
+  @include respond-to(lg) {
+    display: grid;
+    grid-template-columns: minmax(180px, 300px) 1fr minmax(180px, 300px);
+    align-items: center;
+    min-height: $header-height;
+    height: $header-height;
+    gap: $spacing-md;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+  background: transparent;
+  line-height: 0;
+  transition: opacity $transition-fast;
+  min-width: 0;
+  max-width: 55vw;
+  height: 100%;
+  overflow: hidden;
+
+  @include respond-to(xs) {
+    max-width: 48vw;
+  }
+
+  @include respond-to(lg) {
+    max-width: none;
+    justify-self: start;
+    grid-column: 1;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include respond-to(md) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - 200px);
+    pointer-events: none;
+
+    .navList {
+      pointer-events: auto;
+    }
+  }
+
+  @include respond-to(lg) {
+    position: static;
+    transform: none;
+    max-width: none;
+    justify-self: center;
+    grid-column: 2;
+    pointer-events: auto;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: nowrap;
+
+  @include respond-to(md) {
+    gap: $spacing-sm;
+  }
+
+  @include respond-to(lg) {
+    gap: $spacing-md;
+    justify-content: center;
+  }
+
+  @include respond-to(xl) {
+    gap: $spacing-xl;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: $color-text-light;
+  padding: $spacing-xs 0;
+  transition: color $transition-fast;
+  position: relative;
+  white-space: nowrap;
+
+  @include respond-to(md) {
+    font-size: 0.75rem;
+  }
+
+  @include respond-to(lg) {
+    font-size: 0.8125rem;
+    padding: $spacing-sm 0;
+  }
+
+  @include respond-to(xl) {
+    font-size: 0.875rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 2px;
+    background: $color-orange;
+    border-radius: 1px;
+    transition: transform $transition-base;
+  }
+
+  &:hover {
+    color: $color-royal;
+
+    &::after {
+      transform: translateX(-50%) scaleX(0.6);
+    }
+  }
+
+  &.active {
+    color: $color-royal;
+    font-weight: 600;
+
+    &::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+}
+
+.menuToggle {
+  @include button-reset;
+  @include focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: $color-royal;
+  z-index: 2;
+  justify-self: end;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  @include respond-to(lg) {
+    display: none;
+  }
+
+  &:hover {
+    background: $color-gray-100;
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($color-royal, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 99;
+
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+@media (max-width: #{$bp-md - 1px}) {
+  .navOpen {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 90vw);
+    height: 100dvh;
+    height: 100svh;
+    background: $color-white;
+    padding: calc($header-height-mobile + env(safe-area-inset-top) + $spacing-lg) $spacing-lg
+      calc($spacing-xl + env(safe-area-inset-bottom));
+    box-shadow: $shadow-xl;
+    z-index: 100;
+    animation: slideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .navList {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-xs;
+      width: 100%;
+    }
+
+    .navLink {
+      font-size: 1rem;
+      padding: $spacing-sm $spacing-xs;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

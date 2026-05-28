@@ -1,0 +1,318 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  background: $gradient-hero;
+  padding-top: $spacing-lg;
+  padding-bottom: calc($spacing-2xl + 56px);
+  position: relative;
+  overflow: visible;
+
+  @include respond-to(xs) {
+    padding-top: $spacing-xl;
+    padding-bottom: calc($spacing-2xl + 60px);
+  }
+
+  @include respond-to(sm) {
+    padding-top: $spacing-2xl;
+    padding-bottom: calc($spacing-3xl + 72px);
+  }
+
+  @include respond-to(md) {
+    padding-top: $spacing-3xl;
+    padding-bottom: calc($spacing-3xl + 80px);
+  }
+
+  @include respond-to(lg) {
+    padding-top: $spacing-4xl;
+    padding-bottom: calc($spacing-4xl + 88px);
+  }
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba($color-orange, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba($color-royal, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @include respond-to(xs) {
+    gap: $spacing-xl;
+  }
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1.05fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.content {
+  text-align: center;
+  order: 1;
+
+  @include respond-to(md) {
+    text-align: left;
+    order: 1;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-orange;
+  background: $color-orange-light;
+  padding: 0.3125rem 0.75rem;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-md;
+
+  @include respond-to(sm) {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(1.625rem, 7vw, 3.75rem);
+  font-weight: 700;
+  color: $color-royal;
+  line-height: 1.12;
+  margin-bottom: $spacing-md;
+  letter-spacing: -0.02em;
+
+  @include respond-to(sm) {
+    line-height: 1.15;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.highlight {
+  color: $color-orange;
+  display: block;
+
+  @include respond-to(xs) {
+    display: inline;
+  }
+}
+
+.subtitle {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  color: $color-gray-600;
+  line-height: 1.75;
+  margin-bottom: $spacing-lg;
+  max-width: 460px;
+  margin-inline: auto;
+
+  @include respond-to(md) {
+    margin-inline: 0;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.cta {
+  font-size: 0.9375rem;
+  padding: 0.8125rem 1.75rem;
+  width: 100%;
+  max-width: 280px;
+
+  @include respond-to(xs) {
+    width: auto;
+    max-width: none;
+  }
+
+  @include respond-to(md) {
+    font-size: 1rem;
+    padding: 0.9375rem 2.125rem;
+  }
+}
+
+.visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 2;
+  width: 100%;
+  max-width: min(100%, 420px);
+  margin-inline: auto;
+
+  @include respond-to(xs) {
+    max-width: min(100%, 460px);
+  }
+
+  @include respond-to(md) {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+.imageGlow {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba($color-orange, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  z-index: 2;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+
+  @include respond-to(sm) {
+    border-radius: $radius-xl;
+    box-shadow: $shadow-xl;
+  }
+
+  @include respond-to(lg) {
+    max-width: 560px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3.5;
+  object-fit: cover;
+  object-position: center center;
+  background: $color-cream;
+
+  @include respond-to(sm) {
+    aspect-ratio: 1 / 0.92;
+  }
+}
+
+// Floating decorative elements — hidden on very small screens
+.floatPasta1,
+.floatPasta2,
+.floatTomato,
+.floatBasil1,
+.floatBasil2,
+.floatWheat {
+  display: none;
+
+  @include respond-to(sm) {
+    display: block;
+    position: absolute;
+    z-index: 3;
+  }
+}
+
+.floatPasta1,
+.floatPasta2 {
+  width: 28px;
+  height: 28px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect x='14' y='4' width='8' height='28' rx='4' fill='%23f5d78e' transform='rotate(15 18 18)'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+
+  @include respond-to(md) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.floatPasta1 {
+  top: 5%;
+  left: 4%;
+}
+
+.floatPasta2 {
+  bottom: 15%;
+  right: 4%;
+  transform: rotate(45deg);
+}
+
+.floatTomato {
+  width: 24px;
+  height: 24px;
+  background: #ef4444;
+  border-radius: 50%;
+  top: 10%;
+  right: 8%;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+
+  @include respond-to(md) {
+    width: 32px;
+    height: 32px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50% 50% 0 50%;
+  }
+}
+
+.floatBasil1,
+.floatBasil2 {
+  width: 28px;
+  height: 18px;
+  background: #22c55e;
+  border-radius: 50% 50% 50% 0;
+  opacity: 0.9;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+
+  @include respond-to(md) {
+    width: 36px;
+    height: 24px;
+  }
+}
+
+.floatBasil1 {
+  bottom: 22%;
+  left: 2%;
+  transform: rotate(-35deg);
+}
+
+.floatBasil2 {
+  top: 28%;
+  right: 2%;
+  transform: rotate(25deg);
+}
+
+.floatWheat {
+  width: 22px;
+  height: 38px;
+  bottom: 6%;
+  left: 8%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 48'%3E%3Cpath d='M14 48V18 M14 18 Q10 8 14 4 Q18 8 14 18' stroke='%23d4a017' stroke-width='1.5' fill='none'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: contain;
+
+  @include respond-to(md) {
+    width: 28px;
+    height: 48px;
+  }
+}

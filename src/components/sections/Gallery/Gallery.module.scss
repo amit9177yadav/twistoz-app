@@ -1,0 +1,143 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.gallery {
+  @include section-padding;
+  background: $color-white;
+}
+
+.container {
+  @include container;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @include respond-to(sm) {
+    gap: $spacing-md;
+  }
+}
+
+.track {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+  padding-block: $spacing-sm;
+  scroll-padding-inline: $spacing-sm;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include respond-to(sm) {
+    gap: $spacing-lg;
+    scroll-padding-inline: $spacing-md;
+  }
+}
+
+.slide {
+  flex: 0 0 88%;
+  scroll-snap-align: center;
+
+  @include respond-to(xs) {
+    flex: 0 0 72%;
+  }
+
+  @include respond-to(sm) {
+    flex: 0 0 calc(50% - #{$spacing-sm});
+    scroll-snap-align: start;
+  }
+
+  @include respond-to(md) {
+    flex: 0 0 calc(50% - #{$spacing-md});
+  }
+
+  @include respond-to(lg) {
+    flex: 0 0 calc(33.333% - #{$spacing-md});
+  }
+
+  @include respond-to(xl) {
+    flex: 0 0 calc(25% - #{$spacing-md});
+  }
+
+  @include respond-to(2xl) {
+    flex: 0 0 calc(20% - #{$spacing-md});
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  border: 1px solid $color-gray-200;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  @include respond-to(sm) {
+    border-radius: $radius-lg;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+.navBtn {
+  @include button-reset;
+  @include focus-ring;
+  display: none;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-white;
+  border: 1px solid $color-gray-200;
+  color: $color-royal;
+  box-shadow: $shadow-sm;
+  transition: background-color $transition-fast, color $transition-fast,
+    border-color $transition-fast, opacity $transition-fast;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover:not(:disabled) {
+    background: $color-royal;
+    color: $color-white;
+    border-color: $color-royal;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  @include respond-to(sm) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @include respond-to(md) {
+    width: 48px;
+    height: 48px;
+  }
+}

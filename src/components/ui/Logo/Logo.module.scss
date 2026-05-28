@@ -1,0 +1,21 @@
+@use '../../../styles/mixins' as *;
+
+.logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 56px;
+  max-width: clamp(140px, 26vw, 200px);
+  object-fit: contain;
+  object-position: left center;
+
+  @include respond-to(sm) {
+    max-height: 62px;
+    max-width: clamp(155px, 24vw, 215px);
+  }
+
+  @include respond-to(lg) {
+    max-height: 90px;
+    max-width: 280px;
+  }
+}

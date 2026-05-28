@@ -1,0 +1,113 @@
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: $bp-xs) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $bp-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $bp-2xl) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$bp-xs - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: #{$bp-sm - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: #{$bp-md - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: #{$bp-lg - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: #{$bp-xl - 1px}) {
+      @content;
+    }
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-wide;
+  margin-inline: auto;
+  padding-inline: $spacing-sm;
+
+  @include respond-to(xs) {
+    padding-inline: $spacing-md;
+  }
+
+  @include respond-to(sm) {
+    padding-inline: $spacing-lg;
+  }
+
+  @include respond-to(md) {
+    padding-inline: $spacing-xl;
+  }
+
+  @include respond-to(2xl) {
+    max-width: 1320px;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-reset {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-orange;
+    outline-offset: 2px;
+  }
+}
+
+@mixin section-padding {
+  padding-block: $spacing-xl;
+
+  @include respond-to(xs) {
+    padding-block: $spacing-2xl;
+  }
+
+  @include respond-to(sm) {
+    padding-block: $spacing-3xl;
+  }
+
+  @include respond-to(md) {
+    padding-block: $spacing-4xl;
+  }
+}
